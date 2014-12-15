@@ -12,7 +12,7 @@ pack a b = (a + b) * (a + b + 1) `div` 2 + b
 unpack :: Integer -> (Integer, Integer)
 unpack n =
     let
-        b = sqrt $ fromIntegral (8 * n + 1)
+        b = sqrt $ fromIntegral (8 * n + 1) :: Double
         w = (truncate b - 1) `div` 2
     in (((w * (w + 3)) `div` 2) - n, n - ((w * (w + 1)) `div` 2))
 
@@ -35,6 +35,6 @@ reverseTerm n
     | n `mod` 3 == 1 =
         let (x, m) = unpack (n `div` 3)
         in Lambda (reverseVariable x) (reverseTerm m)
-    | n `mod` 3 == 2 =
+    | otherwise =
         let (m1, m2) = unpack (n `div` 3)
         in Apply (reverseTerm m1) (reverseTerm m2)

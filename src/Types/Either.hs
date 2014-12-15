@@ -1,21 +1,22 @@
 module Types.Either where
 
-import Data.Set (unions)
 import Variable
 import Lambda
-import Parser
 
 -- Introduzione
+inl :: Term -> Term
 inl a = Lambda onleft (Lambda onright (Apply (VarTerm onleft) a))
         where onleft = head unusedVars
               onright = unusedVars !! 1
               unusedVars = notUsed $ allVar a
+inr :: Term -> Term
 inr b = Lambda onleft (Lambda onright (Apply (VarTerm onright) b))
         where onleft = head unusedVars
               onright = unusedVars !! 1
               unusedVars = notUsed $ allVar b
 
--- Distruzione
+-- Eliminazione
+reveal :: Term -> Term -> Term -> Term
 reveal x onleft onright = Apply (Apply x onleft) onright
 
 -- Interpretazione
@@ -37,5 +38,5 @@ showEither showLeft showRight t =
                     right = applyArgs (head args) (tail args)
                 in
                     "inr(" ++  showRight right ++ ")"
-            otherwise ->
+            _ ->
                 show term

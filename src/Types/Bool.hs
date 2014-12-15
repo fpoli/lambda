@@ -9,7 +9,7 @@ true = parseRaw "λx.λy.x"
 false :: Term
 false = parseRaw "λx.λy.y"
 
--- Distruzione
+-- Eliminazione
 ifthenelse :: Term -> Term -> Term -> Term
 ifthenelse test ontrue onfalse = Apply (Apply test ontrue) onfalse
 

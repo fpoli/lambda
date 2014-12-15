@@ -32,7 +32,7 @@ succ n = Lambda onzero (Lambda onsucc
                onsucc = unusedVars !! 1
                unusedVars = notUsed $ allVar n
 
--- Distruzione
+-- Eliminazione
 rec :: Term -> Term -> Term -> Term
 rec n onzero onsucc = Apply (Apply n onzero) onsucc
 

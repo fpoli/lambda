@@ -1,5 +1,6 @@
 module Untyped where
 
+import Prelude hiding (succ)
 import qualified Data.Set as Set
 import Data.Set (unions)
 import Variable
@@ -7,6 +8,7 @@ import Lambda
 import Parser
 
 -- omega --> omega --> ...
+omega :: Term
 omega = parseRaw "(λx.x(x))(λx.x(x))"
 
 -- y = fix
@@ -14,23 +16,32 @@ omega = parseRaw "(λx.x(x))(λx.x(x))"
 -- Dato f = tau(f)
 -- allora f = fix(tau)
 -- e lo ricaviamo con f = y(tau) --> tau(y(tau)) = tau(f)
+fix :: Term
 fix = parseRaw "λf.(λx.f(x(x)))(λx.f(x(x)))"
 
 -- restituisce il primo o il secondo
+k1 :: Term
 k1 = parseRaw "λx.λy.x"
+k2 :: Term
 k2 = parseRaw "λx.λy.y"
 
 -- Booleani
+true :: Term
 true  = k1
+false :: Term
 false = k2
+ifThenElse :: Term -> Term -> Term -> Term
 ifThenElse c d e = Apply (Apply c d) e
 
 -- Coppie
+pair :: Term -> Term -> Term
 pair a b = Lambda x (Apply (Apply (VarTerm x) a) b)
            -- allVar evita di collidere con variabili libere
            -- si poteva usare anche freeVar
            where x = head (notUsed (unions [allVar a, allVar b]))
+p1 :: Term -> Term
 p1 c = Apply c k1
+p2 :: Term -> Term
 p2 c = Apply c k2
 
 -- Funzioni elementari
@@ -43,8 +54,8 @@ zero = ident
 zfun :: Term
 zfun = Lambda (Variable "x") zero
 
-success :: Term
-success = Lambda (Variable "x") (pair false (VarTerm (Variable "x")))
+succ :: Term
+succ = Lambda (Variable "x") (pair false (VarTerm (Variable "x")))
 
 eqz :: Term
 eqz = Lambda (Variable "x") (p1 (VarTerm (Variable "x")))
@@ -54,7 +65,7 @@ predec = Lambda (Variable "x") (p2 (VarTerm (Variable "x")))
 
 --      n      i   -> P^n_i
 proj :: Int -> Int -> Term
-proj 0 i = VarTerm (Variable "ret")
+proj 0 _ = VarTerm (Variable "ret")
 proj n 1 = Lambda (Variable "ret") (proj (n-1) 0)
 proj n i = Lambda (head (notUsed (allVar inner))) inner
            where inner = proj (n-1) (i-1)
@@ -98,8 +109,8 @@ rec k g = Apply
 
 -- num arguments?
 min :: Term -> Term
-min x = error "TODO"
+min _ = error "TODO"
 
 --
-somma :: Term
-somma = rec ident (comp 3 success [proj 3 3])
+sum :: Term
+sum = rec ident (comp 3 succ [proj 3 3])

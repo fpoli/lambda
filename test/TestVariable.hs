@@ -1,13 +1,15 @@
-#!/usr/bin/env runhaskell
+module TestVariable where
 
 import Test.HUnit
-import Variable
 import qualified Data.Set as Set
+
+import Variable
 
 -- Data una funzione f:A->B e una coppia (a,b) controlla che f(a)=b
 unitTest :: (Show a, Show b, Eq b) => String -> (a -> b) -> [(a, b)] -> Test
 unitTest title f pairs = test [ assertEqual (title ++ ": testing input " ++ show a) b (f a) | (a, b) <- pairs ]
 
+allcharactersTests :: Test
 allcharactersTests = unitTest
     "allCharacters content"
     (`elem` allCharacters)
@@ -21,9 +23,10 @@ allcharactersTests = unitTest
         ('?', False)
     ]
 
+allVariablesContentTests :: Test
 allVariablesContentTests = unitTest
     "allVariables content (first 1000 elements)"
-    (`elem` allVariables) -- TODO filtra i primi 100
+    (`elem` (take 1000 allVariables))
     [ (Variable a, b) | (a, b) <- [
             ("a", True),
             ("b", True),
@@ -31,17 +34,18 @@ allVariablesContentTests = unitTest
             ("aa", True),
             ("ab", True),
             ("ac", True),
-            ("cw", True){-,
+            ("cw", True),
             ("", False),
             (" ", False),
             ("a a", False),
             ("1", False),
             ("a1b", False)
--}    ]]
+    ]]
 
+allVariablesOrderTests :: Test
 allVariablesOrderTests = unitTest
     "allVariables order"
-    (allVariables !!) -- TODO controlla l'ordine
+    (allVariables !!) -- TODO check order, not position
     [ (a, Variable b) | (a, b) <- [
             (0, "a"),
             (1, "b"),
@@ -52,6 +56,7 @@ allVariablesOrderTests = unitTest
             (100, "cw")
     ]]
 
+notUsedTests :: Test
 notUsedTests = unitTest
     "notUsed"
     (head . notUsed . Set.fromList)
@@ -70,10 +75,10 @@ notUsedTests = unitTest
             ([[x] | x <- allCharacters]++['a':[x] | x <- allCharacters], "ba")
     ]]
 
-main =
-    runTestTT (test [
-            allcharactersTests,
-            allVariablesContentTests,
-            allVariablesOrderTests,
-            notUsedTests
-        ])
+tests :: Test
+tests = TestList [
+        allcharactersTests,
+        allVariablesContentTests,
+        allVariablesOrderTests,
+        notUsedTests
+    ]

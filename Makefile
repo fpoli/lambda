@@ -1,25 +1,22 @@
-GHC_OPTS = -W -Wall -fno-warn-unused-do-bind -ferror-spans -O
-.PHONY = default deps run test lint clean
+.PHONY = all run test lint clean
+SHELL = bash
 
-default: main
+all:
+	cabal sandbox init
+	cabal install --only-dependencies --enable-tests
+	cabal build
 
-deps:
-	cabal install hunit parsec
-
-run: main
-	./main
-
-main: *.hs
-	ghc $(GHC_OPTS) --make main
+run:
+	./dist/build/lambda/lambda
 
 test:
-	@for file in Test*.hs */Test*.hs; do \
-		echo "(*) Testing $$file ..."; \
-		runhaskell $$file; \
-	done
+	cabal test
 
 lint:
 	hlint . --ignore="Eta reduce"
 
 clean:
-	rm -f *.o */*.o *.hi */*.hi *.tix */*.tix main
+	rm -f *.o   */*.o   */*/*.o 
+	rm -f *.hi  */*.hi  */*/*.hi
+	rm -f *.tix */*.tix */*/*.tix
+	cabal clean
