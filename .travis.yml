@@ -1,14 +1,13 @@
 language: haskell
 
 before_install:
-  - export CABAL=cabal
-  - $CABAL update
+  - cabal update
 
 install:
-  - $CABAL install --dependencies-only --enable-tests
+  - make deps
 
 script:
-  - $CABAL build
-  - $CABAL test --show-details=always
+  - make build
+  - make test
   - make lint
   - make run

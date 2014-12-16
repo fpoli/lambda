@@ -1,8 +1,13 @@
-.PHONY = all run test lint clean
-SHELL = bash
+SHELL := /bin/bash
 
-all:
+.PHONY: all deps test run lint clean
+
+all: deps build
+
+deps:
 	cabal install --only-dependencies --enable-tests
+
+build:
 	cabal build
 
 test:
