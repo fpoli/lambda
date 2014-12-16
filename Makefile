@@ -17,7 +17,7 @@ run:
 	./dist/build/lambda/lambda
 
 lint:
-	hlint . --ignore="Eta reduce"
+	hlint . --ignore="Eta reduce" --ignore="Reduce duplication"
 
 clean:
 	rm -f *.o   */*.o   */*/*.o 
