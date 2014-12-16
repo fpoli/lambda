@@ -16,9 +16,9 @@ main = do
 
 	let compiled = reduceAll ten
 	print compiled
-	-- output:
+	-- output: ...
 	putStrLn $ showInt compiled
-	-- output:
+	-- output: succ(succ(...(succ(zero))...))
 
 	let term = fromJust $ parse "λx.λy.(λz.z(y))(x)"
 	print term

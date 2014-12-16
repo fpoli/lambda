@@ -10,4 +10,8 @@ install:
 script:
   - $CABAL build
   - $CABAL test --show-details=always
-  - lambda
+  - ls
+  - tree || true
+  - ls dist
+  - ls dist/build/lambda/lambda
+  - ./dist/build/lambda/lambda

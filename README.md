@@ -2,6 +2,8 @@
 
 Untyped Lambda Calculus Machine, with functions for encoding simple datatypes (`Int`, `Bool`, `Either`, `Pair`) back and forth their lambda-representation.
 
+[![Build Status](https://travis-ci.org/fpoli/lambda.svg?branch=master)](https://travis-ci.org/fpoli/lambda)
+
 ## Example
 
 ```haskell
