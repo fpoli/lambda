@@ -2,9 +2,11 @@ language: haskell
 
 before_install:
   - cabal update
+  - sudo apt-get update
 
 install:
   - make deps
+  - sudo apt-get install -y hlint
 
 script:
   - make build
