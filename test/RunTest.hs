@@ -24,4 +24,4 @@ main = do
             Types.TestEither.tests
         ]
     when (errors count /= 0 || failures count /= 0)
-		exitFailure
+        exitFailure

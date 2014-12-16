@@ -9,7 +9,7 @@ install:
   - sudo apt-get install -y hlint
 
 script:
-  - make build
-  - make test
+  - GHC_OPTS=-Werror make build
+  - GHC_OPTS=-Werror make test
   - make lint
   - make run
