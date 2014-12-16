@@ -24,7 +24,7 @@ library
                        Types.Int,
                        Types.Pair,
                        Types.Either
-  ghc-options:         -W -Wall -fno-warn-unused-do-bind -fwarn-tabs -ferror-spans -O
+  ghc-options:         -Wall -fno-warn-unused-do-bind -fwarn-tabs -ferror-spans -O
   hs-source-dirs:      src
   build-depends:       base,
                        parsec,
@@ -33,7 +33,7 @@ library
 
 executable lambda
   main-is:             Main.hs
-  ghc-options:         -W -Wall -fno-warn-unused-do-bind -fwarn-tabs -ferror-spans -O
+  ghc-options:         -Wall -fno-warn-unused-do-bind -fwarn-tabs -ferror-spans -O
   hs-source-dirs:      .
   build-depends:       base,
                        lambda
@@ -42,7 +42,7 @@ executable lambda
 test-suite tests
   type:                exitcode-stdio-1.0
   main-is:             RunTest.hs
-  ghc-options:         -W -Wall -fno-warn-unused-do-bind -fwarn-tabs -ferror-spans -O
+  ghc-options:         -Wall -fno-warn-unused-do-bind -fwarn-tabs -ferror-spans -O
   hs-source-dirs:      test
   build-depends:       base,
                        lambda,

@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-.PHONY: all deps test run lint clean
+.PHONY: all deps build test run lint clean
 
 all: deps build
 

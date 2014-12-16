@@ -23,5 +23,5 @@ allVariables = map Variable allStrings
 
 notUsed :: Set.Set Variable -> [Variable]
 notUsed used
-	| Set.null used = allVariables
-	| otherwise = [s | s <- allVariables, not (Set.member s used)]
+    | Set.null used = allVariables
+    | otherwise = [s | s <- allVariables, not (Set.member s used)]
