@@ -3,7 +3,7 @@ module Types.Either where
 import Variable
 import Lambda
 
--- Introduzione
+-- Introduction
 inl :: Term -> Term
 inl a = Lambda onleft (Lambda onright (Apply (VarTerm onleft) a))
         where onleft = head unusedVars
@@ -15,11 +15,11 @@ inr b = Lambda onleft (Lambda onright (Apply (VarTerm onright) b))
               onright = unusedVars !! 1
               unusedVars = notUsed $ allVar b
 
--- Eliminazione
+-- Elimination
 reveal :: Term -> Term -> Term -> Term
 reveal x onleft onright = Apply (Apply x onleft) onright
 
--- Interpretazione
+-- Interpretation
 showEither :: (Term -> String) -> (Term -> String) -> Term -> String
 showEither showLeft showRight t =
     let

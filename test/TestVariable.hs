@@ -26,7 +26,7 @@ allcharactersTests = unitTest
 allVariablesContentTests :: Test
 allVariablesContentTests = unitTest
     "allVariables content (first 1000 elements)"
-    (`elem` (take 1000 allVariables))
+    (`elem` take 1000 allVariables)
     [ (Variable a, b) | (a, b) <- [
             ("a", True),
             ("b", True),

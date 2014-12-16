@@ -10,8 +10,5 @@ install:
 script:
   - $CABAL build
   - $CABAL test --show-details=always
-  - ls
-  - tree || true
-  - ls dist
-  - ls dist/build/lambda/lambda
-  - ./dist/build/lambda/lambda
+  - make lint
+  - make run

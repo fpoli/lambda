@@ -3,17 +3,17 @@ module Types.Bool where
 import Lambda
 import Parser
 
--- Introduzione
+-- Introduction
 true :: Term
 true = parseRaw "λx.λy.x"
 false :: Term
 false = parseRaw "λx.λy.y"
 
--- Eliminazione
+-- Elimination
 ifthenelse :: Term -> Term -> Term -> Term
 ifthenelse test ontrue onfalse = Apply (Apply test ontrue) onfalse
 
--- Interpretazione
+-- Interpretation
 showBool :: Term -> String
 showBool t =
     let

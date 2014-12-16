@@ -2,15 +2,14 @@
 SHELL = bash
 
 all:
-	cabal sandbox init
 	cabal install --only-dependencies --enable-tests
 	cabal build
 
-run:
-	./dist/build/lambda/lambda
-
 test:
 	cabal test --show-details=always
+
+run:
+	./dist/build/lambda/lambda
 
 lint:
 	hlint . --ignore="Eta reduce"

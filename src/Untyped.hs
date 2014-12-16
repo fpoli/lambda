@@ -83,8 +83,8 @@ comp n f g_list = foldr Lambda
                                             x <- f:g_list
                                         ]))
 
-rec :: Term -> Term -> Term
-rec k g = Apply
+recursion :: Term -> Term -> Term
+recursion k g = Apply
             fix (Lambda f
                 (Lambda x
                     (Lambda y
@@ -113,4 +113,4 @@ min _ = error "TODO"
 
 --
 sum :: Term
-sum = rec ident (comp 3 succ [proj 3 3])
+sum = recursion ident (comp 3 succ [proj 3 3])

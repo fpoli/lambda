@@ -2,12 +2,13 @@ module Types.Int where
 
 import Prelude hiding (succ)
 import Data.Set (unions)
+
 import Variable
 import Lambda
 import Parser
 import Types.Bool
 
--- Introduzione
+-- Introduction
 zero :: Term
 zero = Lambda onzero (Lambda onsucc (VarTerm onzero))
        where onzero = Variable "x"
@@ -32,24 +33,24 @@ succ n = Lambda onzero (Lambda onsucc
                onsucc = unusedVars !! 1
                unusedVars = notUsed $ allVar n
 
--- Eliminazione
-rec :: Term -> Term -> Term -> Term
-rec n onzero onsucc = Apply (Apply n onzero) onsucc
+-- Elimination
+recursion :: Term -> Term -> Term -> Term
+recursion n onzero onsucc = Apply (Apply n onzero) onsucc
 
--- Utilità
+-- Utils
 eqz :: Term -> Term
-eqz n = rec n true (Lambda x (Lambda y false))
+eqz n = recursion n true (Lambda x (Lambda y false))
         where x = head unusedVars
               y = unusedVars !! 1
               unusedVars = notUsed $ allVar n
 pred :: Term -> Term
-pred n = rec n zero (Lambda x (Lambda y (VarTerm x)))
+pred n = recursion n zero (Lambda x (Lambda y (VarTerm x)))
          where x = head unusedVars
                y = unusedVars !! 1
                unusedVars = notUsed $ allVar n
 sum :: Term -> Term -> Term
 sum a b = Apply sum_a b
-          where sum_a = rec a (Lambda x (VarTerm x))
+          where sum_a = recursion a (Lambda x (VarTerm x))
                             (Lambda n (Lambda res
                                 (Lambda x (succ (Apply (VarTerm res) (VarTerm x))))
                             ))
@@ -58,7 +59,7 @@ sum a b = Apply sum_a b
                 res = unusedVars !! 2
                 unusedVars = notUsed $ unions [allVar a, allVar b]
 
--- Interpretazione
+-- Interpretation
 showInt :: Term -> String
 showInt t =
     let
