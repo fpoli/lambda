@@ -11,7 +11,7 @@ build:
 	cabal build --ghc-options=$(GHC_OPTS)
 
 test:
-	cabal test --show-details=always --ghc-options=$(GHC_OPTS)
+	cabal test --show-details=always
 
 run:
 	./dist/build/lambda/lambda
