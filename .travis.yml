@@ -1,0 +1,13 @@
+language: haskell
+
+before_install:
+  - export CABAL=cabal
+  - $CABAL update
+
+install:
+  - $CABAL install --dependencies-only --enable-tests
+
+script:
+  - $CABAL build
+  - $CABAL test --show-details=always
+  - lambda

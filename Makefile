@@ -10,7 +10,7 @@ run:
 	./dist/build/lambda/lambda
 
 test:
-	cabal test
+	cabal test --show-details=always
 
 lint:
 	hlint . --ignore="Eta reduce"
