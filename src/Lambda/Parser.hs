@@ -1,9 +1,13 @@
-module Parser (Parser.parse, parseRaw) where
+module Lambda.Parser (
+    Lambda.Parser.parse,
+    Lambda.Parser.parseRaw
+) where
 
 import Text.Parsec
 import Text.Parsec.String
-import Variable
-import Lambda
+
+import Lambda.Variable
+import Lambda.Engine
 
 lambdaExprParser :: Parser Term
 lambdaExprParser =

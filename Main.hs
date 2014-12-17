@@ -1,9 +1,9 @@
 import Prelude hiding (succ, sum)
 import Data.Maybe
 
-import Lambda
-import Parser
-import Types.Int
+import Lambda.Engine
+import Lambda.Parser
+import Lambda.Types.Int
 
 main :: IO()
 main = do

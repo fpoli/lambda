@@ -1,14 +1,14 @@
-module Types.TestEither where
+module Lambda.Types.TestEither where
 
 import Prelude hiding (succ, pred, sum)
 import Test.HUnit
 
-import Types.Either
-import Variable
-import Lambda
-import Types.Bool
-import Types.Int
-import Types.Pair
+import Lambda.Variable
+import Lambda.Engine
+import Lambda.Types.Either
+import Lambda.Types.Bool
+import Lambda.Types.Int
+import Lambda.Types.Pair
 
 tests :: Test
 tests = test [

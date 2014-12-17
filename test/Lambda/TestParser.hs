@@ -1,10 +1,10 @@
-module TestParser where
+module Lambda.TestParser where
 
 import Test.HUnit
 
-import Variable
-import Lambda
-import Parser
+import Lambda.Variable
+import Lambda.Engine
+import Lambda.Parser
 
 tests :: Test
 tests = test [

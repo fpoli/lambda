@@ -1,12 +1,12 @@
-module Types.Int where
+module Lambda.Types.Int where
 
 import Prelude hiding (succ)
 import Data.Set (unions)
 
-import Variable
-import Lambda
-import Parser
-import Types.Bool
+import Lambda.Variable
+import Lambda.Engine
+import Lambda.Parser
+import Lambda.Types.Bool
 
 -- Introduction
 zero :: Term

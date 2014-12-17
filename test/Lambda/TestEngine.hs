@@ -1,11 +1,11 @@
-module TestLambda where
+module Lambda.TestEngine where
 
 import Test.HUnit
 import qualified Data.Set as Set
 
-import Variable
-import Lambda
-import Parser
+import Lambda.Variable
+import Lambda.Engine
+import Lambda.Parser
 
 tests :: Test
 tests = test [

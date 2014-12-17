@@ -2,26 +2,26 @@ import System.Exit
 import Control.Monad
 import Test.HUnit
 
-import TestVariable
-import TestLambda
-import TestParser
-import TestUntyped
-import Types.TestBool
-import Types.TestInt
-import Types.TestPair
-import Types.TestEither
+import Lambda.TestVariable
+import Lambda.TestEngine
+import Lambda.TestParser
+import Lambda.TestUntyped
+import Lambda.Types.TestBool
+import Lambda.Types.TestInt
+import Lambda.Types.TestPair
+import Lambda.Types.TestEither
 
 main :: IO ()
 main = do
     count <- runTestTT $ TestList [
-            TestVariable.tests,
-            TestLambda.tests,
-            TestParser.tests,
-            TestUntyped.tests,
-            Types.TestBool.tests,
-            Types.TestInt.tests,
-            Types.TestPair.tests,
-            Types.TestEither.tests
+            Lambda.TestVariable.tests,
+            Lambda.TestEngine.tests,
+            Lambda.TestParser.tests,
+            Lambda.TestUntyped.tests,
+            Lambda.Types.TestBool.tests,
+            Lambda.Types.TestInt.tests,
+            Lambda.Types.TestPair.tests,
+            Lambda.Types.TestEither.tests
         ]
     when (errors count /= 0 || failures count /= 0)
         exitFailure

@@ -1,12 +1,12 @@
-module TestUntyped where
+module Lambda.TestUntyped where
 
 import Prelude hiding (succ, sum)
 import Test.HUnit
 import Data.Maybe
 
-import Variable
-import Lambda
-import Untyped
+import Lambda.Variable
+import Lambda.Engine
+import Lambda.Untyped
 
 tests :: Test
 tests = test [

@@ -1,10 +1,10 @@
-module Types.TestBool where
+module Lambda.Types.TestBool where
 
 import Test.HUnit
 
-import Types.Bool
-import Variable
-import Lambda
+import Lambda.Variable
+import Lambda.Engine
+import Lambda.Types.Bool
 
 tests :: Test
 tests = test [

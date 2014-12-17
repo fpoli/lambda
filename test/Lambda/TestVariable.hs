@@ -1,9 +1,9 @@
-module TestVariable where
+module Lambda.TestVariable where
 
 import Test.HUnit
 import qualified Data.Set as Set
 
-import Variable
+import Lambda.Variable
 
 -- Data una funzione f:A->B e una coppia (a,b) controlla che f(a)=b
 unitTest :: (Show a, Show b, Eq b) => String -> (a -> b) -> [(a, b)] -> Test

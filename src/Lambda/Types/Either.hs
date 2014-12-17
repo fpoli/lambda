@@ -1,7 +1,7 @@
-module Types.Either where
+module Lambda.Types.Either where
 
-import Variable
-import Lambda
+import Lambda.Variable
+import Lambda.Engine
 
 -- Introduction
 inl :: Term -> Term

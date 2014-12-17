@@ -1,7 +1,7 @@
-module Types.Bool where
+module Lambda.Types.Bool where
 
-import Lambda
-import Parser
+import Lambda.Engine
+import Lambda.Parser
 
 -- Introduction
 true :: Term

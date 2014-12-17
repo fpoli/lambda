@@ -1,13 +1,13 @@
-module Types.TestPair where
+module Lambda.Types.TestPair where
 
 import Prelude hiding (succ, pred, sum)
 import Test.HUnit
 
-import Types.Pair
-import Variable
-import Lambda
-import Types.Bool
-import Types.Int
+import Lambda.Variable
+import Lambda.Engine
+import Lambda.Types.Pair
+import Lambda.Types.Bool
+import Lambda.Types.Int
 
 tests :: Test
 tests = test [

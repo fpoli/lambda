@@ -1,10 +1,10 @@
-module Types.Pair where
+module Lambda.Types.Pair where
 
 import Data.Set (unions)
 
-import Variable
-import Lambda
-import Parser
+import Lambda.Variable
+import Lambda.Engine
+import Lambda.Parser
 
 -- Introduction
 pair :: Term -> Term -> Term

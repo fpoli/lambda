@@ -1,4 +1,4 @@
-module Variable where
+module Lambda.Variable where
 
 import qualified Data.Set as Set
 

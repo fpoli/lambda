@@ -1,11 +1,12 @@
-module Untyped where
+module Lambda.Untyped where
 
 import Prelude hiding (succ)
 import qualified Data.Set as Set
 import Data.Set (unions)
-import Variable
-import Lambda
-import Parser
+
+import Lambda.Variable
+import Lambda.Engine
+import Lambda.Parser
 
 -- omega --> omega --> ...
 omega :: Term

@@ -1,8 +1,8 @@
-module Lambda where
+module Lambda.Engine where
 
 import qualified Data.Set as Set
-import Data.Maybe()
-import Variable
+
+import Lambda.Variable
 
 data Term = Lambda Variable Term
           | Apply Term Term

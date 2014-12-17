@@ -1,9 +1,10 @@
-module Hash where
+module Lambda.Hash where
 
 import Data.List
 import Data.Maybe
-import Lambda
-import Variable
+
+import Lambda.Variable
+import Lambda.Engine
 
 pack :: Integer -> Integer -> Integer
 pack 0 0 = 0
