@@ -20,7 +20,7 @@ lint:
 	hlint . --ignore="Eta reduce" --ignore="Reduce duplication"
 
 clean:
-	rm -f *.o   */*.o   */*/*.o 
+	rm -f *.o   */*.o   */*/*.o
 	rm -f *.hi  */*.hi  */*/*.hi
 	rm -f *.tix */*.tix */*/*.tix
 	cabal clean
